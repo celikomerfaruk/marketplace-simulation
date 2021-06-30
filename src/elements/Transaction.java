@@ -1,7 +1,7 @@
 package elements;
 /**
  * Class that holds transactions
- * @author Windows10
+ * @author celik
  *
  */
 
