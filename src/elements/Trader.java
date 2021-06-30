@@ -13,12 +13,12 @@ public class Trader {
 		if(market.getSellingPQ().peek().getAmount() > amount ) {
 			market.getSellingPQ().peek().setAmount(market.getSellingPQ().peek().getAmount()-amount);
 			this.getWallet().setBlockedCoins(this.wallet.getBlockedCoins()-amount);
-			this.wallet.setDollars(this.wallet.getDollars()+amount*price*(1-market.getFee())/1000);
+			this.wallet.setDollars(this.wallet.getDollars()+(amount*price*(1.0-(market.getFee()/1000.0))));
 		}
 		else {
 			market.getSellingPQ().poll();
 			this.getWallet().setBlockedCoins(this.wallet.getBlockedCoins()-amount);
-			this.wallet.setDollars(this.wallet.getDollars()+amount*price*(1-market.getFee())/1000);
+			this.wallet.setDollars(this.wallet.getDollars()+(amount*price*(1.0-(market.getFee()/1000.0))));
 		}
 		return 0;
 	};

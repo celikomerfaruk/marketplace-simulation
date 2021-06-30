@@ -42,6 +42,7 @@ public class Market {
 		this.fee = fee;
 		sellingOrders = new PriorityQueue<SellingOrder>();
 		buyingOrders = new PriorityQueue<BuyingOrder>();
+		transactions = new ArrayList<Transaction>();
 	};
 	public PriorityQueue<SellingOrder> getSellingPQ(){
 		return sellingOrders;

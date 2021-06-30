@@ -1,3 +1,6 @@
-Current prices: 0.0 0.0 0.0
-Current prices: 1.0 5.0 3.0
-Current market size: 20.0 12
+Current prices: 0.00000 0.00000 0.00000
+Current prices: 3.00000 4.00000 3.50000
+Current market size: 20.00000 12.00000
+Current market size: 20.00000 7.00000
+Current prices: 3.00000 5.00000 4.00000
+Number of successful transactions: 1

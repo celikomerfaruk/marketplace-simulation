@@ -19,7 +19,7 @@ import elements.Trader;
 public class Main {
 		public static Random myRandom;
 		public static double totalDolarInPQ = 0;
-		public static int totalCoinInPQ = 0;
+		public static double totalCoinInPQ = 0;
 	
 	public static void main(String args[]) throws FileNotFoundException {
 		
@@ -114,12 +114,12 @@ public class Main {
 				market.checkTransactions(traders);
 			}
 			if (eventType == 3) {
-				int tempID = reader.nextInt();
-				traders.get(tempID).getWallet().setDollars(traders.get(tempID).getWallet().getDollars()+reader.nextDouble());
+				int tempID = line.nextInt();
+				traders.get(tempID).getWallet().setDollars(traders.get(tempID).getWallet().getDollars()+line.nextDouble());
 			}
 			if(eventType == 4) {
-				int tempID = reader.nextInt();
-				double tempAmount = reader.nextDouble();
+				int tempID = line.nextInt();
+				double tempAmount = line.nextDouble();
 				if (traders.get(tempID).getWallet().getDollars()>= tempAmount) {
 					traders.get(tempID).getWallet().setDollars(traders.get(tempID).getWallet().getDollars()-tempAmount);
 				}
@@ -128,8 +128,8 @@ public class Main {
 				}
 			}
 			if (eventType == 5) {
-				int tempID = reader.nextInt();
-				writer.print("Trader " + tempID  + ": " + (traders.get(tempID).getWallet().getDollars() + traders.get(tempID).getWallet().getBlockedDollars()) + "$ " + (traders.get(tempID).getWallet().getCoins()+ traders.get(tempID).getWallet().getBlockedCoins()) +"PQ\n");
+				int tempID = line.nextInt();
+				writer.printf("Trader " + tempID  + ": " + "%.5f" + "$ " + "%.5f" +"PQ\n",(traders.get(tempID).getWallet().getDollars() + traders.get(tempID).getWallet().getBlockedDollars()),(traders.get(tempID).getWallet().getCoins()+ traders.get(tempID).getWallet().getBlockedCoins()));
 				
 			}
 			if (eventType == 777) {
@@ -139,22 +139,23 @@ public class Main {
 				
 			}
 			if(eventType == 500) {
-				writer.print("Current market size: "+ totalDolarInPQ +" "+ totalCoinInPQ +"\n");
+				writer.printf("Current market size: "+"%.5f" +" "+"%.5f" +"\n", totalDolarInPQ,totalCoinInPQ );
 			}
 			if (eventType == 501) {
 				writer.print("Number of successful transactions: " + market.getTransactions().size() +"\n");
 			}
 			
 			if (eventType == 502) {
-				writer.print(invalidQueries + "\n");
+				writer.print("Number of invalid queries: "+invalidQueries + "\n");
 			}
 			if (eventType == 505) {
-				double buyPrice , sellPrice;
+				double buyPrice , sellPrice, avgPrice;
 				 if(market.getBuyingPQ().peek() != null) {
 					 buyPrice = market.getBuyingPQ().peek().getPrice();
 				 }
 				 else {
 					buyPrice = 0 ;
+					 
 				}
 				 if(market.getSellingPQ().peek() != null) {
 					 sellPrice = market.getSellingPQ().peek().getPrice();
@@ -162,8 +163,21 @@ public class Main {
 				 else {
 					 sellPrice =0 ;
 				}
+				if (buyPrice == 0 && sellPrice == 0) {
+					avgPrice = 0;
+				}
+				else if(buyPrice == 0) {
+					avgPrice = sellPrice;
+				}
+				else if(sellPrice == 0) {
+					avgPrice = buyPrice;
+				}
+				else {
+					avgPrice = (buyPrice+ sellPrice)/2;
+				}
 				 
-				writer.print("Current prices: " + buyPrice + " " + sellPrice + " " + ((buyPrice+sellPrice)/2) +"\n" );
+				 
+				writer.printf("Current prices: " + "%.5f" + " " + "%.5f" + " " + "%.5f" +"\n",buyPrice,sellPrice,avgPrice );
 			}
 			if (eventType == 555) {
 				for (Trader trader : traders) {
@@ -171,16 +185,19 @@ public class Main {
 				}
 			}
 			if (eventType == 666) {
-				double givenPrice = reader.nextDouble();
+				double givenPrice = line.nextDouble();
+				
 				if(market.getBuyingPQ().peek().getPrice() > givenPrice) {
 					while(market.getBuyingPQ().peek().getPrice() >= givenPrice) {
 						market.giveSellOrder(new SellingOrder(0, market.getBuyingPQ().peek().getAmount(), market.getBuyingPQ().peek().getPrice()));
+						totalCoinInPQ += market.getBuyingPQ().peek().getAmount();
 						market.checkTransactions(traders);
 					}
 				}
 				else {
 					while(market.getSellingPQ().peek().getPrice() <= givenPrice) {
 						market.giveBuyOrder(new BuyingOrder(0, market.getSellingPQ().peek().getAmount(), market.getSellingPQ().peek().getPrice()));
+						totalDolarInPQ += market.getSellingPQ().peek().getAmount()* market.getSellingPQ().peek().getPrice();
 						market.checkTransactions(traders);
 					}
 					
