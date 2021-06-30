@@ -15,12 +15,29 @@ import elements.Market;
 import elements.SellingOrder;
 import elements.Trader;
 
-
+/**
+ * The class that prints the output after reading the input and performing the necessary operations and calculations.
+ * @author celik
+ *
+ */
 public class Main {
+	/**
+	 * Generates a random number
+	 */
 		public static Random myRandom;
+		/**
+		 * The total dollar amount in the queue used when calculating the market size
+		 */
 		public static double totalDolarInPQ = 0;
+		/**
+		 * The total coin amount in the queue used when calculating the market size
+		 */
 		public static double totalCoinInPQ = 0;
-	
+		/**
+		 * The method that prints the output after reading the input and performing the necessary operations and calculations.
+		 * @param args Receives two arguments: path to input file and path to output file.
+		 * @throws FileNotFoundException Action to be taken in case of a possible file not found error.
+		 */
 	public static void main(String args[]) throws FileNotFoundException {
 		
 		Scanner reader = new Scanner(new File(args[0]));
