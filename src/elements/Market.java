@@ -66,6 +66,8 @@ public class Market {
 				traders.get(buyingOrders.peek().getTraderID()).buy(sellingAmount, sellingPrice, this);
 				executable.Main.totalCoinInPQ -= sellingAmount;
 				executable.Main.totalDolarInPQ -= sellingPrice*sellingAmount;
+				if(sellingOrders.peek()== null || buyingOrders.peek()== null)
+					break;
 			}
 		}
 	};

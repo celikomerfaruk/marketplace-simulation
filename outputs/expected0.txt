@@ -1,6 +1,46 @@
-Current prices: 0.00000 0.00000 0.00000
-Current prices: 3.00000 4.00000 3.50000
-Current market size: 20.00000 12.00000
-Current market size: 20.00000 7.00000
-Current prices: 3.00000 5.00000 4.00000
-Number of successful transactions: 1
+Trader 0: 0.00000$ 0.00000PQ
+Trader 1: 100.00000$ 100.00000PQ
+Trader 2: 80.00000$ 110.00000PQ
+Trader 3: 50.00000$ 120.00000PQ
+Trader 4: 120.00000$ 130.00000PQ
+Trader 5: 130.00000$ 76.00000PQ
+Trader 6: 130.00000$ 70.00000PQ
+Trader 7: 103.00000$ 140.00000PQ
+Trader 8: 110.00000$ 194.00000PQ
+Trader 9: 170.00000$ 200.00000PQ
+Trader 0: 173.60000$ -5.30395PQ
+Trader 1: 5.00000$ 111.78448PQ
+Trader 2: 0.00000$ 116.91151PQ
+Trader 3: 60.00000$ 124.12263PQ
+Trader 4: 120.00000$ 131.91822PQ
+Trader 5: 130.00000$ 78.68887PQ
+Trader 6: 130.00000$ 76.68392PQ
+Trader 7: 103.00000$ 141.76183PQ
+Trader 8: 110.00000$ 198.67674PQ
+Trader 9: 170.00000$ 200.86829PQ
+Current market size: 0.00000 9.00000
+Number of successful transactions: 4
+Number of invalid queries: 2
+Trader 0: 193.44000$ -6.30395PQ
+Trader 1: 14.92000$ 110.78448PQ
+Trader 2: 0.00000$ 116.91151PQ
+Trader 3: 60.00000$ 124.12263PQ
+Trader 4: 80.00000$ 134.91822PQ
+Trader 5: 130.00000$ 78.68887PQ
+Trader 6: 130.00000$ 76.68392PQ
+Trader 7: 53.00000$ 146.76183PQ
+Trader 8: 169.52000$ 192.67674PQ
+Trader 9: 170.00000$ 200.86829PQ
+Trader 0: 193.44000$ -6.30395PQ
+Trader 1: 14.92000$ 110.78448PQ
+Trader 2: 0.00000$ 116.91151PQ
+Trader 3: 60.00000$ 124.12263PQ
+Trader 4: 80.00000$ 134.91822PQ
+Trader 5: 130.00000$ 78.68887PQ
+Trader 6: 130.00000$ 76.68392PQ
+Trader 7: 53.00000$ 146.76183PQ
+Trader 8: 169.52000$ 192.67674PQ
+Trader 9: 170.00000$ 200.86829PQ
+Current market size: 70.00000 16.00000
+Number of successful transactions: 7
+Number of invalid queries: 4

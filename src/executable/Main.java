@@ -201,21 +201,26 @@ public class Main {
 					writer.printf("Trader " + trader.getId()  + ": " + "%.5f" + "$ " + "%.5f" +"PQ\n",(trader.getWallet().getDollars() + trader.getWallet().getBlockedDollars()),(trader.getWallet().getCoins()+ trader.getWallet().getBlockedCoins()));
 				}
 			}
+			
 			if (eventType == 666) {
 				double givenPrice = line.nextDouble();
 				
-				if(market.getBuyingPQ().peek().getPrice() > givenPrice) {
+				if(market.getBuyingPQ().peek() != null && market.getBuyingPQ().peek().getPrice() > givenPrice) {
 					while(market.getBuyingPQ().peek().getPrice() >= givenPrice) {
 						market.giveSellOrder(new SellingOrder(0, market.getBuyingPQ().peek().getAmount(), market.getBuyingPQ().peek().getPrice()));
 						totalCoinInPQ += market.getBuyingPQ().peek().getAmount();
 						market.checkTransactions(traders);
+						if(market.getBuyingPQ().peek() ==null)
+							break;
 					}
 				}
-				else {
+				else if(market.getSellingPQ().peek() !=null){
 					while(market.getSellingPQ().peek().getPrice() <= givenPrice) {
 						market.giveBuyOrder(new BuyingOrder(0, market.getSellingPQ().peek().getAmount(), market.getSellingPQ().peek().getPrice()));
 						totalDolarInPQ += market.getSellingPQ().peek().getAmount()* market.getSellingPQ().peek().getPrice();
 						market.checkTransactions(traders);
+						if(market.getSellingPQ().peek() ==null)
+							break;
 					}
 					
 				}
