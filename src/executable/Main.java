@@ -33,6 +33,7 @@ public class Main {
 		 * The total coin amount in the queue used when calculating the market size
 		 */
 		public static double totalCoinInPQ = 0;
+		
 		/**
 		 * The method that prints the output after reading the input and performing the necessary operations and calculations.
 		 * @param args Receives two arguments: path to input file and path to output file.

@@ -1,4 +1,7 @@
 package elements;
+
+
+
 /**
  * Class that contains fields and methods related to the Trader.
  * @author celik
@@ -39,6 +42,7 @@ public class Trader {
 			market.getSellingPQ().peek().setAmount(market.getSellingPQ().peek().getAmount()-amount);
 			this.getWallet().setBlockedCoins(this.wallet.getBlockedCoins()-amount);
 			this.wallet.setDollars(this.wallet.getDollars()+(amount*price*(1.0-(market.getFee()/1000.0))));
+			
 		}
 		else {
 			market.getSellingPQ().poll();
@@ -64,6 +68,7 @@ public class Trader {
 			market.getBuyingPQ().peek().setAmount(market.getBuyingPQ().peek().getAmount()-amount);
 			this.getWallet().setBlockedDollars(this.wallet.getBlockedDollars()-(amount*price));
 			this.wallet.setCoins(this.wallet.getCoins()+amount);
+			
 		}
 		else {
 			market.getBuyingPQ().poll();
