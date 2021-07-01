@@ -1,6 +1,6 @@
 package elements;
 
-
+import executable.Main;
 
 /**
  * Class that contains fields and methods related to the Trader.
@@ -63,6 +63,7 @@ public class Trader {
 			double xtra = market.getBuyingPQ().peek().price - price ;
 			this.wallet.setBlockedDollars(this.wallet.getBlockedDollars()-xtra*amount);
 			this.wallet.setDollars(this.wallet.getDollars()+xtra*amount);
+			Main.totalDolarInPQ-=xtra*amount ;
 		}
 		if(market.getBuyingPQ().peek().getAmount() > amount) {
 			market.getBuyingPQ().peek().setAmount(market.getBuyingPQ().peek().getAmount()-amount);
